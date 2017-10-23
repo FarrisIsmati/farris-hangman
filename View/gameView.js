@@ -1,0 +1,5 @@
+class gameView {
+  constructor(){
+    
+  }
+}
