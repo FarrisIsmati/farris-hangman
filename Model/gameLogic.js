@@ -1,33 +1,34 @@
-class newGame {
+class GameLogic {
   constructor(){
-    this.playerState = {}
-    this.words = retreiveWords()
+    this.words = this.retreiveWords()
     this.usedWords = []
     this.score = 0
   }
 
   retreiveWords(){
-    //Returns all words from words.js
+    return words.slice('')
   }
 
-  retrieveWord(word){
-    //choose a random word
-    //let curWord = new CurrentWord(word)
-    //this.usedWords.push(word)
-    //this.removeWord()
+  createRandomNum(){
+    return Math.floor(Math.random()*this.words.length)
   }
 
-  removeWord(word){
-    //removes word
+  retrieveWord(){
+    if (this.words.length > 1) {
+      let randomNum = this.createRandomNum()
+      let currentWord = this.words[randomNum]
+      this.usedWords.push(currentWord)
+      this.removeWord(randomNum)
+    } else {
+      this.words = this.retreiveWords()
+    }
+  }
+
+  removeWord(pos){
+    this.words.splice(pos, 1)
   }
 
   incrementScore(){
-    //this.score += 1
-  }
-
-  //SILVER
-  storeToLocalStorage(){
-    //Store all relevant data into local storage
-    //
+    this.score += 1
   }
 }

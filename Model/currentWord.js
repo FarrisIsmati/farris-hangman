@@ -1,4 +1,4 @@
-class CurrentWord extends gameLogic {
+class CurrentWord extends GameLogic {
   constructor(){
     this.word = this.retrieveWord()
     this.wordLength = this.word.length
