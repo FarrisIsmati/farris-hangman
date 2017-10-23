@@ -5,4 +5,4 @@
 //   hard: ['phlegm','rhythmic','wildebeest','venezuela']
 // }
 
-let words = ['banjo','kitten','horse','carrot','computer']
+let words = ['BANJO','KITTEN','HORSE','CARROT','COMPUTER']
