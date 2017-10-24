@@ -1,6 +1,3 @@
-//Need to add guess limit (word length + 3)
-//Need to add guess word correctly
-
 class GameLogic {
   constructor(){
     //Main game logic
@@ -12,6 +9,7 @@ class GameLogic {
     this.currentWord = ''
     this.incorGuess = []
     this.corGuess = []
+    this.tries = 0
   }
 
   //PRIVATE
@@ -27,12 +25,15 @@ class GameLogic {
 
   //PUBLIC
   //retrieves a current random word
+  //Sets number of tries based on current word
   retrieveWord(){
     console.log('RUN THIS RETREIVE WORD FUNCITON!')
     if (this.words.length > 1) {
       let randomNum = Math.floor(Math.random()*this.words.length)
       this.currentWord = this.words[randomNum]
+      this.tries = this.currentWord.length + 3
       this.setUsedWords(randomNum)
+      this.reset()
     } else {
       this.words = this.retreiveWords()
       this.retrieveWord()
@@ -57,16 +58,14 @@ class GameLogic {
   //PUBLIC
   //Store guessed letters for current word
   storeLetter(letter){
-    let curLetter = letter.toUpperCase()
     //If you haven't already guessed the letter
-    if (this.hasNotBeenEntered(curLetter)){
+    if (this.hasNotBeenEntered(letter)){
       //If correctly guessed store in correctly guessed else store in incorrectly guessed
       if (this.checkLetter(letter)) {
         this.storeGuessedLetter(this.corGuess, letter)
         //CHECK WIN CONDITIONS
         if (this.checkCompletion()){
           this.incrementScore()
-          this.reset()
           this.retrieveWord()
         }
       } else {
@@ -92,12 +91,11 @@ class GameLogic {
 
   //PRIVATE
   storeGuessedLetter(arr, letter){
-    let curLetter = letter.toUpperCase()
     if (arr.length > 1){
-      arr.push(curLetter)
+      arr.push(letter)
       arr.sort()
     } else {
-      arr.push(curLetter)
+      arr.push(letter)
     }
   }
 
@@ -108,8 +106,6 @@ class GameLogic {
     let reducedArr = this.currentWord.split('').filter(function(item) {
       return seen.hasOwnProperty(item) ? false : (seen[item] = true);
     })
-    //console.log(reducedArr.length + ' : ' + this.corGuess.length)
-    //console.log(this.corGuess)
     if (reducedArr.length === this.corGuess.length){
       console.log('COMPLETED')
       return true

@@ -5,7 +5,7 @@ game1.retrieveWord()
 $('#submit').on('click', function() {
   let curLetter = $('#letterInput').val()
   if (game1.validKeypress){
-    game1.storeLetter(curLetter)
+    game1.storeLetter(curLetter.toUpperCase())
     console.log(game1)
   }
 })
