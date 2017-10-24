@@ -6,7 +6,3 @@
 // }
 
 let words = ['BANJO','KITTEN','HORSE','CARROT','COMPUTER']
-
-
-//Testing
-module.exports = words

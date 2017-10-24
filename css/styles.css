@@ -28,7 +28,8 @@ body {
 .correct-guess-holder,
 .correct-guess,
 .incorrect-guess-holder,
-.input-holder {
+.input-holder,
+.buttons-holder {
   display: flex;
   justify-content: center;
   align-items: center;

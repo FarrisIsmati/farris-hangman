@@ -116,6 +116,3 @@ class GameLogic {
     this.incorGuess = []
   }
 }
-
-//TESTING
-module.exports = GameLogic
