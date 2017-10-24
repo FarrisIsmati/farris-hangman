@@ -59,8 +59,4 @@ console.log('-----------')
 console.log('Guessing: R')
 game1.storeLetter('R')
 
-//Show Correct and Incorrect Guesses
-console.log('Correct Guessed : ' + game1.corGuess)
-console.log('Incorrect Guessed : ' + game1.incorGuess)
-
 console.log('-----------')

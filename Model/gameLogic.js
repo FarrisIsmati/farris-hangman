@@ -1,11 +1,15 @@
 //Need to add guess limit (word length + 3)
 //Need to add guess word correctly
+
 class GameLogic {
   constructor(){
+    //Main game logic
     this.words = this.retreiveWords()
     this.usedWords = []
-    this.currentWord = this.retrieveWord()
     this.score = 0
+
+    //Current Word
+    this.currentWord = ''
     this.incorGuess = []
     this.corGuess = []
   }
@@ -16,14 +20,19 @@ class GameLogic {
     return words.slice('')
   }
 
+  setUsedWords(randomNum){
+    this.words.splice(randomNum, 1)
+    this.usedWords.push(this.currentWord)
+  }
+
   //PUBLIC
   //retrieves a current random word
   retrieveWord(){
+    console.log('RUN THIS RETREIVE WORD FUNCITON!')
     if (this.words.length > 1) {
       let randomNum = Math.floor(Math.random()*this.words.length)
       this.currentWord = this.words[randomNum]
-      this.words.splice(randomNum, 1)
-      this.usedWords.push(this.currentWord)
+      this.setUsedWords(randomNum)
     } else {
       this.words = this.retreiveWords()
       this.retrieveWord()
@@ -100,9 +109,13 @@ class GameLogic {
     }
   }
 
+  //Private
   reset(){
     //EMPTY BOTH ARRAYS
     this.corGuess = []
     this.incorGuess = []
   }
 }
+
+//TESTING
+module.exports = GameLogic
