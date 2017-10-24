@@ -1,11 +1,11 @@
 let game1 = new GameLogic()
-
 game1.retrieveWord()
 
 $('#submit').on('click', function() {
   game1.submitLetter()
 })
 
+//Validates keypress
 $('#letterInput').on("input", function() {
     let keyInput = this.value;
     if (game1.validateKeypress(keyInput)){

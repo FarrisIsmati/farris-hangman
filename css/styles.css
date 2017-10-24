@@ -19,7 +19,7 @@ body {
 /*FOOTER*/
 
 .footer {
-  background-color: orange;
+  /*background-color: orange;*/
   padding: 20px 0 20px 0;
   display: grid;
   grid-template-rows: auto 15% auto 15%;
@@ -36,13 +36,13 @@ body {
 }
 
 .correct-guess-holder {
-    background-color: yellow;
+    /*background-color: yellow;*/
 }
 
 .correct-guess {
   margin: 0 3px 0 3px;
   width: 30px;
-  border-bottom: solid 2px black;
+  border-bottom: solid 4px black;
 }
 
 .correct-guess-letter {
@@ -53,7 +53,7 @@ body {
 }
 
 .incorrect-guess-holder {
-  background-color: blue;
+  /*background-color: blue;*/
 }
 
 .incorrect-letter {
@@ -61,17 +61,17 @@ body {
 }
 
 .input-holder {
-  background-color: yellow;
+  /*background-color: yellow;*/
 }
 
 .input-box {
   text-align: center;
   padding: 5px;
-  height: 60px;
-  width: 60px;
-  font-size: 40px;
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
 }
 
 .buttons-holder {
-  background-color: blue;
+  /*background-color: blue;*/
 }

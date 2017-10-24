@@ -24,7 +24,6 @@ class GameLogic {
     if (this.words.length > 1) {
       this.reset()
       this.currentWord = this.words[randomNum]
-      this.tries = this.setTries(this.currentWord)
       this.setUsedWords(randomNum)
       this.setCurrentWord()
     } else {
@@ -35,33 +34,38 @@ class GameLogic {
 
   //Store guessed letters for current word
   storeLetter(letter){
-    //If you haven't already guessed the letter
     if (this.hasNotBeenEntered(letter)){
-      //If correctly guessed store in correctly guessed else store in incorrectly guessed
+      console.log(game1)
       if (this.checkLetter(letter)) {
         this.storeGuessedLetter(this.corGuess, letter)
         this.revealLetter(letter)
-        //CHECK WIN CONDITIONS
         if (this.checkCompletion()){
           this.incrementScore()
-          //this.reset()
+          //PROMPT NEXT WORD
           this.retrieveWord()
         }
       } else {
         this.storeGuessedLetter(this.incorGuess, letter)
+        this.checkTries()
       }
     } else {
       return false
     }
   }
 
+  checkTries(){
+    let numberOfTries = this.currentWord.length + 1
+    this.tries += 1
+
+    if (numberOfTries === this.tries){
+      alert('max number of tries')
+      this.retrieveWord()
+    }
+  }
+
   setUsedWords(randomNum){
     this.words.splice(randomNum, 1)
     this.usedWords.push(this.currentWord)
-  }
-
-  setTries(word){
-    return word.length + 3
   }
 
   incrementScore(){
@@ -150,10 +154,9 @@ class GameLogic {
   }
 
   submitLetter () {
-    console.log(game1)
-    let curLetter = $('#letterInput').val()
+    let curLetter = $('#letterInput').val().toUpperCase()
     if (this.validKeypress){
-      this.storeLetter(curLetter.toUpperCase())
+      this.storeLetter(curLetter)
     }
   }
 }
