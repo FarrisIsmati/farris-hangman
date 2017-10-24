@@ -2,10 +2,7 @@ class GameView extends GameLogic {
   constructor(){
     super()
     this.model = new GameLogic()
-  }
-
-  startGame () {
-
+    this.validKeypress = false
   }
 
   validateKeypress (key) {

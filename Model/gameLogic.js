@@ -46,12 +46,20 @@ class GameLogic {
     this.score += 1
   }
 
+  hasNotBeenEntered(letter){
+    if (this.incorGuess.indexOf(letter) === -1 && this.corGuess.indexOf(letter) === -1){
+      return true
+    } else {
+      return false
+    }
+  }
+
   //PUBLIC
   //Store guessed letters for current word
   storeLetter(letter){
     let curLetter = letter.toUpperCase()
     //If you haven't already guessed the letter
-    if (this.incorGuess.indexOf(curLetter) === -1 || this.corGuess.indexOf(curLetter) === -1){
+    if (this.hasNotBeenEntered(curLetter)){
       //If correctly guessed store in correctly guessed else store in incorrectly guessed
       if (this.checkLetter(letter)) {
         this.storeGuessedLetter(this.corGuess, letter)
@@ -84,11 +92,12 @@ class GameLogic {
 
   //PRIVATE
   storeGuessedLetter(arr, letter){
+    let curLetter = letter.toUpperCase()
     if (arr.length > 1){
-      arr.push(letter)
+      arr.push(curLetter)
       arr.sort()
     } else {
-      arr.push(letter)
+      arr.push(curLetter)
     }
   }
 
