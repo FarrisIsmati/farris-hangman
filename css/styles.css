@@ -1,0 +1,53 @@
+html,
+body {
+  height: 100%
+}
+body {
+  margin: 0 20% 0 20%;
+  display: grid;
+  grid-template-rows: 5% auto 35%;
+}
+
+.header {
+  background-color: red;
+}
+
+.visual {
+  background-color: green;
+}
+
+/*FOOTER*/
+
+.footer {
+  background-color: orange;
+  padding: 20px 0 20px 0;
+  display: grid;
+  grid-template-rows: auto 15% auto 15%;
+}
+
+.correct-guess-holder {
+  background-color: yellow;
+}
+
+.incorrect-guess-holder {
+  background-color: blue;
+}
+
+.input-holder {
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-box {
+  text-align: center;
+  padding: 5px;
+  height: 60px;
+  width: 60px;
+  font-size: 40px;
+}
+
+.buttons-holder {
+  background-color: blue;
+}
