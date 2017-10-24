@@ -12,50 +12,25 @@ class GameLogic {
     this.tries = 0
   }
 
-  //PRIVATE
   //retrieves a new set of words
   retreiveWords(){
     return words.slice('')
   }
 
-  setUsedWords(randomNum){
-    this.words.splice(randomNum, 1)
-    this.usedWords.push(this.currentWord)
-  }
-
-  //PUBLIC
   //retrieves a current random word
-  //Sets number of tries based on current word
   retrieveWord(){
-    console.log('RUN THIS RETREIVE WORD FUNCITON!')
+    let randomNum = Math.floor(Math.random()*this.words.length)
     if (this.words.length > 1) {
-      let randomNum = Math.floor(Math.random()*this.words.length)
-      this.currentWord = this.words[randomNum]
-      this.tries = this.currentWord.length + 3
-      this.setUsedWords(randomNum)
       this.reset()
+      this.currentWord = this.words[randomNum]
+      this.tries = this.setTries(this.currentWord)
+      this.setUsedWords(randomNum)
     } else {
       this.words = this.retreiveWords()
-      this.retrieveWord()
+      //this.retrieveWord()
     }
   }
 
-  //PRIVATE
-  //Increments score
-  incrementScore(){
-    console.log('VICTORY')
-    this.score += 1
-  }
-
-  hasNotBeenEntered(letter){
-    if (this.incorGuess.indexOf(letter) === -1 && this.corGuess.indexOf(letter) === -1){
-      return true
-    } else {
-      return false
-    }
-  }
-
-  //PUBLIC
   //Store guessed letters for current word
   storeLetter(letter){
     //If you haven't already guessed the letter
@@ -66,18 +41,39 @@ class GameLogic {
         //CHECK WIN CONDITIONS
         if (this.checkCompletion()){
           this.incrementScore()
-          this.retrieveWord()
+          this.reset()
         }
       } else {
         this.storeGuessedLetter(this.incorGuess, letter)
       }
     } else {
-      //DO NOT STORE LETTER
       return false
     }
   }
 
-  //PRIVATE
+  setUsedWords(randomNum){
+    this.words.splice(randomNum, 1)
+    this.usedWords.push(this.currentWord)
+  }
+
+  setTries(word){
+    return word.length + 3
+  }
+
+  incrementScore(){
+    console.log('VICTORY')
+    this.score += 1
+  }
+
+  //Check if variable has been entered in array
+  hasNotBeenEntered(letter){
+    if (this.incorGuess.indexOf(letter) === -1 && this.corGuess.indexOf(letter) === -1){
+      return true
+    } else {
+      return false
+    }
+  }
+
   //Check if letter matches with letter in the word
   checkLetter(letter){
     let re = new RegExp(letter, 'i')
@@ -89,7 +85,6 @@ class GameLogic {
     }
   }
 
-  //PRIVATE
   storeGuessedLetter(arr, letter){
     if (arr.length > 1){
       arr.push(letter)
@@ -99,9 +94,7 @@ class GameLogic {
     }
   }
 
-  //PRIVATE
   checkCompletion(){
-    //USE THIS TO GET NON REPEATED WORDS IN THE WORD
     let seen = {}
     let reducedArr = this.currentWord.split('').filter(function(item) {
       return seen.hasOwnProperty(item) ? false : (seen[item] = true);
@@ -114,9 +107,8 @@ class GameLogic {
     }
   }
 
-  //Private
   reset(){
-    //EMPTY BOTH ARRAYS
+    this.currentWord = ''
     this.corGuess = []
     this.incorGuess = []
   }

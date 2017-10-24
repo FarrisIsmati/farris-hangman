@@ -1,8 +1,11 @@
 class GameView extends GameLogic {
   constructor(){
     super()
-    this.model = new GameLogic()
     this.validKeypress = false
+  }
+
+  get currentWordArr () {
+    return this.currentWord.split('')
   }
 
   validateKeypress (key) {
@@ -13,4 +16,13 @@ class GameView extends GameLogic {
       return false
     }
   }
+
+  submitLetter () {
+    console.log(game1)
+    let curLetter = $('#letterInput').val()
+    if (this.validKeypress){
+      this.storeLetter(curLetter.toUpperCase())
+    }
+  }
+
 }
