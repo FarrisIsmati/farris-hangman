@@ -4,17 +4,19 @@ class GameLogic {
   constructor(){
     this.words = this.retreiveWords()
     this.usedWords = []
-    this.currentWord = ''
+    this.currentWord = this.retrieveWord()
     this.score = 0
     this.incorGuess = []
     this.corGuess = []
   }
 
+  //PRIVATE
   //retrieves a new set of words
   retreiveWords(){
     return words.slice('')
   }
 
+  //PUBLIC
   //retrieves a current random word
   retrieveWord(){
     if (this.words.length > 1) {
@@ -28,11 +30,14 @@ class GameLogic {
     }
   }
 
+  //PRIVATE
   //Increments score
   incrementScore(){
+    console.log('VICTORY')
     this.score += 1
   }
 
+  //PUBLIC
   //Store guessed letters for current word
   storeLetter(letter){
     let curLetter = letter.toUpperCase()
@@ -41,30 +46,34 @@ class GameLogic {
       //If correctly guessed store in correctly guessed else store in incorrectly guessed
       if (this.checkLetter(letter)) {
         this.storeGuessedLetter(this.corGuess, letter)
+        //CHECK WIN CONDITIONS
+        if (this.checkCompletion()){
+          this.incrementScore()
+          this.reset()
+          this.retrieveWord()
+        }
       } else {
         this.storeGuessedLetter(this.incorGuess, letter)
       }
     } else {
+      //DO NOT STORE LETTER
       return false
     }
   }
 
+  //PRIVATE
   //Check if letter matches with letter in the word
   checkLetter(letter){
-    console.log(this.currentWord)
     let re = new RegExp(letter, 'i')
     if (re.exec(this.currentWord)){
-      //If COMPLETED word
-        //INCREMENT score
-        //NEW WORD?
-      //Else
-        //RETURN TRUE
+      //If complete increment score and retreive new word else the letter matches
       return true
     } else {
       return false
     }
   }
 
+  //PRIVATE
   storeGuessedLetter(arr, letter){
     if (arr.length > 1){
       arr.push(letter)
@@ -72,5 +81,28 @@ class GameLogic {
     } else {
       arr.push(letter)
     }
+  }
+
+  //PRIVATE
+  checkCompletion(){
+    //USE THIS TO GET NON REPEATED WORDS IN THE WORD
+    let seen = {}
+    let reducedArr = this.currentWord.split('').filter(function(item) {
+      return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+    })
+    //console.log(reducedArr.length + ' : ' + this.corGuess.length)
+    //console.log(this.corGuess)
+    if (reducedArr.length === this.corGuess.length){
+      console.log('COMPLETED')
+      return true
+    } else {
+      return false
+    }
+  }
+
+  reset(){
+    //EMPTY BOTH ARRAYS
+    this.corGuess = []
+    this.incorGuess = []
   }
 }
