@@ -4,7 +4,16 @@ class GameView extends GameLogic {
     this.model = new GameLogic()
   }
 
-  static validateKeypress () {
+  startGame () {
 
+  }
+
+  validateKeypress (key) {
+    let re = new RegExp(/^[a-zA-Z]+$/, 'i')
+    if (re.exec(key)) {
+      return true
+    } else {
+      return false
+    }
   }
 }
