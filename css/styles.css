@@ -25,19 +25,40 @@ body {
   grid-template-rows: auto 15% auto 15%;
 }
 
+.correct-guess-holder,
+.correct-guess,
+.incorrect-guess-holder,
+.input-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .correct-guess-holder {
-  background-color: yellow;
+    background-color: yellow;
+}
+
+.correct-guess {
+  margin: 0 3px 0 3px;
+  width: 30px;
+  border-bottom: solid 2px black;
+}
+
+.correct-guess p {
+  font-size: 20px;
+  margin-bottom: 0px;
 }
 
 .incorrect-guess-holder {
   background-color: blue;
 }
 
+.incorrect-letter {
+  margin-bottom: 0px;
+}
+
 .input-holder {
   background-color: yellow;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .input-box {

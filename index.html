@@ -19,12 +19,27 @@
     <script src="view/gameView.js" defer></script>
     <script src="gameMain.js" defer></script>
   </head>
+
   <body>
     <header class="header"></header>
     <content class="visual"></content>
     <footer class="footer">
-      <div class="correct-guess-holder"></div>
-      <div class="incorrect-guess-holder"></div>
+      <div class="correct-guess-holder">
+        <div class="correct-guess">
+          <p class="correct-guess-letter">H</p>
+        </div>
+        <div class="correct-guess">
+          <p class="correct-guess-letter">O</p>
+        </div>
+        <div class="correct-guess">
+          <p class="correct-guess-letter">R</p>
+        </div>
+      </div>
+      <div class="incorrect-guess-holder">
+        <p class="incorrect-letter">A</p>
+        <p class="incorrect-letter">C</p>
+        <p class="incorrect-letter">R</p>
+      </div>
       <div class="input-holder">
           <input type="text" class="input-box" maxlength="1" id="letterInput">
       </div>
