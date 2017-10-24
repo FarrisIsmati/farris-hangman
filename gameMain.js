@@ -1,12 +1,6 @@
-let game1 = new GameView()
+let game1 = new GameLogic()
 
 game1.retrieveWord()
-
-for (let i = 0; i < game1.currentWordArr.length; i++){
-  $('.correct-guess-holder').append($(`<div class="correct-guess">
-    <p class="correct-guess-letter">${game1.currentWordArr[i]}</p>
-  </div>`))
-}
 
 $('#submit').on('click', function() {
   game1.submitLetter()

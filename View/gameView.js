@@ -8,6 +8,14 @@ class GameView extends GameLogic {
     return this.currentWord.split('')
   }
 
+  setCurrentWord () {
+    for (let i = 0; i < this.currentWordArr.length; i++){
+      $('.correct-guess-holder').append($(`<div class="correct-guess">
+        <p class="correct-guess-letter">${game1.currentWordArr[i]}</p>
+      </div>`))
+    }
+  }
+
   validateKeypress (key) {
     let re = new RegExp(/^[a-zA-Z]+$/, 'i')
     if (re.exec(key)) {
@@ -24,5 +32,4 @@ class GameView extends GameLogic {
       this.storeLetter(curLetter.toUpperCase())
     }
   }
-
 }
