@@ -8,8 +8,14 @@ body {
   grid-template-rows: 5% auto 35%;
 }
 
+p {
+  margin-bottom: 0px;
+}
+
 .header {
-  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .visual {
@@ -48,7 +54,6 @@ body {
 .correct-guess-letter {
   opacity: 0;
   font-size: 20px;
-  margin-bottom: 0px;
   pointer-events: none;
 }
 
@@ -74,4 +79,8 @@ body {
 
 .buttons-holder {
   /*background-color: blue;*/
+}
+
+#next{
+  color: white;
 }
