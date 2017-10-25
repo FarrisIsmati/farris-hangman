@@ -36,7 +36,7 @@ class GameLogic {
   //Check if letter matches with letter in the word
   checkLetter(letter){
     let re = new RegExp(letter, 'i')
-    if (re.exec(this.currentWord)){
+    if (re.exec(this.currentWord) && letter != ''){
       return true
     } else {
       return false

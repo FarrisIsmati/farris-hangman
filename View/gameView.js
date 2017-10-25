@@ -12,6 +12,16 @@ class GameView extends GameLogic {
     return this.tries
   }
 
+  toggleClass(element){
+    if (element.hasClass('button-disable')){
+      element.addClass('button-enable')
+      element.removeClass('button-disable')
+    } else {
+      element.removeClass('button-enable')
+      element.addClass('button-disable')
+    }
+  }
+
   callListeners(){
     this.nextBtn()
     this.submitBtn()
@@ -19,35 +29,38 @@ class GameView extends GameLogic {
   }
 
   nextBtn() {
+    let self = this
     $('#next').on('click', function() {
-      if (game1.victory === true){
-        $('#next').css('color', 'white')
-        game1.retrieveWord()
-        game1.victory = false
-        game1.setIncorrectGuess()
+      if (self.victory === true){
+        self.toggleClass($('#next'))
+        self.retrieveWord()
+        self.victory = false
+        self.setIncorrectGuess()
       }
     })
   }
 
   submitBtn(){
+    let self = this
     $('#submit').on('click', function() {
-      game1.submitLetter()
+      self.submitLetter()
     })
   }
 
   letterValidate(){
+    let self = this
     $('#letterInput').on("input", function() {
-        let keyInput = this.value;
-        if (game1.validateKeypress(keyInput)){
-          game1.validKeypress = true
+        let keyInput = $('#letterInput').val();
+        if (self.validateKeypress(keyInput)){
+          self.validKeypress = true
         } else if (keyInput === '') {
           //Ignore this keystroke
         } else {
-          game1.validKeypress = false
+          self.validKeypress = false
         }
     }).keydown(function (e) {
       if (e.keyCode == 13) {
-        game1.submitLetter()
+        self.submitLetter()
       }
     })
   }
@@ -77,7 +90,7 @@ class GameView extends GameLogic {
         if (this.checkCompletion()){
           this.incrementScore()
           this.victory = true
-          $('#next').css('color', 'black')
+          this.toggleClass($('#next'))
         }
       } else {
         this.storeGuessedLetter(this.incorGuess, letter)
@@ -136,7 +149,7 @@ class GameView extends GameLogic {
 
   validateKeypress (key) {
     let re = new RegExp(/^[a-zA-Z]+$/, 'i')
-    if (re.exec(key)) {
+    if (re.exec(key) && key != '') {
       return true
     } else {
       return false

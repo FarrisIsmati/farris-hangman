@@ -88,6 +88,10 @@ p {
   margin: 0 5px 0 5px;
 }
 
-#next{
+.button-enable {
+  color: black;
+}
+
+.button-disable {
   color: #B7B7B7;
 }
