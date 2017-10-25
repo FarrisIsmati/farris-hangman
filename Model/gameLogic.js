@@ -72,8 +72,9 @@ class GameLogic {
     }
 
   reset(){
+    this.tries = 7
     this.hideHangman()
-    this.setIncorrectGuess()
+    //this.setIncorrectGuess()
     this.currentWord = ''
     this.corGuess = []
     this.incorGuess = []

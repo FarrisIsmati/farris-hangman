@@ -22,16 +22,6 @@ class GameView extends GameLogic {
     }
   }
 
-  // ass(element, has, add, remove){
-  //   if (element.hasClass('button-disable')){
-  //     element.addClass('button-enable')
-  //     element.removeClass('button-disable')
-  //   } else {
-  //     element.removeClass('button-enable')
-  //     element.addClass('button-disable')
-  //   }
-  // }
-
   callListeners(){
     this.nextBtn()
     this.submitBtn()
@@ -84,7 +74,6 @@ class GameView extends GameLogic {
     let randomNum = Math.floor(Math.random()*this.words.length)
     if (this.words.length > 1) {
       this.reset()
-      this.setTries()
       this.currentWord = this.words[randomNum]
       this.setUsedWords(randomNum)
       this.setCurrentWord()
@@ -116,14 +105,8 @@ class GameView extends GameLogic {
     }
   }
 
-  setTries() {
-    this.tries = 7
-    $('#number-of-tries').text(this.numberOfTries)
-  }
-
   decrementTries(){
     this.tries -= 1
-    $('#number-of-tries').text(this.numberOfTries)
     this.addHangman(this.tries + 1)
     if (0 === this.tries){
       this.retrieveWord()
