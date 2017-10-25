@@ -65,6 +65,7 @@ class GameLogic {
   }
 
   reset(){
+    this.setIncorrectGuess()
     this.currentWord = ''
     this.corGuess = []
     this.incorGuess = []

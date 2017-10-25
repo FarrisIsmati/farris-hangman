@@ -12,12 +12,52 @@ class GameView extends GameLogic {
     return this.tries
   }
 
+  callListeners(){
+    this.nextBtn()
+    this.submitBtn()
+    this.letterValidate()
+  }
+
+  nextBtn() {
+    $('#next').on('click', function() {
+      if (game1.victory === true){
+        $('#next').css('color', 'white')
+        game1.retrieveWord()
+        game1.victory = false
+        game1.setIncorrectGuess()
+      }
+    })
+  }
+
+  submitBtn(){
+    $('#submit').on('click', function() {
+      game1.submitLetter()
+    })
+  }
+
+  letterValidate(){
+    $('#letterInput').on("input", function() {
+        let keyInput = this.value;
+        if (game1.validateKeypress(keyInput)){
+          game1.validKeypress = true
+        } else if (keyInput === '') {
+          //Ignore this keystroke
+        } else {
+          game1.validKeypress = false
+        }
+    }).keydown(function (e) {
+      if (e.keyCode == 13) {
+        game1.submitLetter()
+      }
+    })
+  }
+
   //retrieves a current random word
   retrieveWord(){
     let randomNum = Math.floor(Math.random()*this.words.length)
     if (this.words.length > 1) {
       this.reset()
-      this.setTries
+      this.setTries()
       this.currentWord = this.words[randomNum]
       this.setUsedWords(randomNum)
       this.setCurrentWord()
@@ -40,8 +80,9 @@ class GameView extends GameLogic {
           $('#next').css('color', 'black')
         }
       } else {
-        this.decrementTries()
         this.storeGuessedLetter(this.incorGuess, letter)
+        this.decrementTries()
+        this.setIncorrectGuess()
       }
     } else {
       return false
@@ -57,13 +98,22 @@ class GameView extends GameLogic {
     this.tries -= 1
     $('#number-of-tries').text(this.numberOfTries)
     if (0 === this.tries){
-      alert('max number of tries')
       this.retrieveWord()
+      //this.setIncorrectGuess()
     }
   }
 
   incrementScore(){
     this.score += 1
+  }
+
+  setIncorrectGuess () {
+    $('.incorrect-guess').remove()
+    for (let i = 0; i < this.incorGuess.length; i++){
+      $('.incorrect-guess-holder').append($(`
+        <p class="incorrect-guess">${this.incorGuess[i]}</p>`
+      ))
+    }
   }
 
   setCurrentWord () {
@@ -94,10 +144,12 @@ class GameView extends GameLogic {
   }
 
   submitLetter () {
-    let inputBox = $('#letterInput')
-    if (this.validKeypress){
-      this.storeLetter(inputBox.val().toUpperCase())
-      inputBox.val('')
+    if (!this.victory){
+      let inputBox = $('#letterInput')
+      if (this.validKeypress){
+        this.storeLetter(inputBox.val().toUpperCase())
+        inputBox.val('')
+      }
     }
   }
 }
