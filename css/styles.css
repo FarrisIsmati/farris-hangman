@@ -19,7 +19,17 @@ p {
 }
 
 .visual {
-  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show{
+  opacity: 1;
+}
+
+.hide{
+  opacity: 0;
 }
 
 /*FOOTER*/
@@ -46,9 +56,11 @@ p {
 }
 
 .correct-guess {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   margin: 0 3px 0 3px;
   width: 30px;
-  border-bottom: solid 4px black;
+  border-bottom: solid 1px black;
 }
 
 .correct-guess-letter {
@@ -61,8 +73,11 @@ p {
   /*background-color: blue;*/
 }
 
-.incorrect-letter {
+.incorrect-guess {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   margin-bottom: 0px;
+  color: #FF5252;
 }
 
 .input-holder {
@@ -75,10 +90,27 @@ p {
   height: 50px;
   width: 50px;
   font-size: 20px;
+  border: 0px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: transparent;
+  text-shadow: 0 0 0 black;
+  background-color: #F5F5F5;
+  transition: background-color 1s ease;
+  transition: text-shadow 1s ease;
+}
+
+.input-box:focus {
+  outline-width: 0;
+  color: white;
+  background-color: #B3B3B3;
+  color : transparent;
+  text-shadow: 0 0 0 white;
+  transition: background-color 0.5s ease;
+  transition: text-shadow 0.5s ease;
 }
 
 .buttons-holder {
-  /*background-color: blue;*/
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 20px;
@@ -90,8 +122,20 @@ p {
 
 .button-enable {
   color: black;
+  transition: color 0.1s ease;
+}
+
+.button-enable:hover{
+  color: #F5F5F5;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .button-disable {
   color: #B7B7B7;
+  pointer-events: none;
 }
+
+.st0{fill:none;stroke:#000000;stroke-miterlimit:10;}
+.st1{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+.st2{fill:#FFFFFF;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}

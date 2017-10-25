@@ -12,15 +12,25 @@ class GameView extends GameLogic {
     return this.tries
   }
 
-  toggleClass(element){
-    if (element.hasClass('button-disable')){
-      element.addClass('button-enable')
-      element.removeClass('button-disable')
+  toggleClass(element, class1, class2){
+    if (element.hasClass(class2)){
+      element.addClass(class1)
+      element.removeClass(class2)
     } else {
-      element.removeClass('button-enable')
-      element.addClass('button-disable')
+      element.removeClass(class1)
+      element.addClass(class2)
     }
   }
+
+  // ass(element, has, add, remove){
+  //   if (element.hasClass('button-disable')){
+  //     element.addClass('button-enable')
+  //     element.removeClass('button-disable')
+  //   } else {
+  //     element.removeClass('button-enable')
+  //     element.addClass('button-disable')
+  //   }
+  // }
 
   callListeners(){
     this.nextBtn()
@@ -28,14 +38,18 @@ class GameView extends GameLogic {
     this.letterValidate()
   }
 
+  runNext(){
+    this.toggleClass($('#next'), 'button-enable','button-disable')
+    this.retrieveWord()
+    this.victory = false
+    this.setIncorrectGuess()
+  }
+
   nextBtn() {
     let self = this
     $('#next').on('click', function() {
       if (self.victory === true){
-        self.toggleClass($('#next'))
-        self.retrieveWord()
-        self.victory = false
-        self.setIncorrectGuess()
+        self.runNext()
       }
     })
   }
@@ -90,7 +104,7 @@ class GameView extends GameLogic {
         if (this.checkCompletion()){
           this.incrementScore()
           this.victory = true
-          this.toggleClass($('#next'))
+          this.toggleClass($('#next'),'button-enable','button-disable')
         }
       } else {
         this.storeGuessedLetter(this.incorGuess, letter)
@@ -110,10 +124,15 @@ class GameView extends GameLogic {
   decrementTries(){
     this.tries -= 1
     $('#number-of-tries').text(this.numberOfTries)
+    this.addHangman(this.tries + 1)
     if (0 === this.tries){
       this.retrieveWord()
       //this.setIncorrectGuess()
     }
+  }
+
+  addHangman(tries){
+    this.toggleClass($(`#hang-${tries}`), 'show', 'hide')
   }
 
   incrementScore(){
