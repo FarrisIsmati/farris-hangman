@@ -12,6 +12,14 @@ class GameView extends GameLogic {
     return this.tries
   }
 
+  get victoryCondition () {
+    return this.victory
+  }
+
+  setVictoryTrue () {
+    this.victory = true
+  }
+
   toggleClass(element, class1, class2){
     if (element.hasClass(class2)){
       element.addClass(class1)
@@ -25,10 +33,20 @@ class GameView extends GameLogic {
   callListeners(){
     this.nextBtn()
     this.submitBtn()
+    this.lostBtn()
     this.letterValidate()
   }
 
-  runNext(){
+  lostBtn() {
+    let self = this
+    $('#fade-screen').on('click', function() {
+      self.toggleClass($('#fade-screen'), 'hide2','show2')
+      self.retrieveWord()
+      self.setIncorrectGuess()
+    })
+  }
+
+  changeWord(){
     this.toggleClass($('#next'), 'button-enable','button-disable')
     this.retrieveWord()
     this.victory = false
@@ -38,8 +56,14 @@ class GameView extends GameLogic {
   nextBtn() {
     let self = this
     $('#next').on('click', function() {
-      if (self.victory === true){
-        self.runNext()
+      if (self.victoryCondition === true){
+        self.changeWord()
+      }
+    })
+
+    $(document).keypress(function(e) {
+      if(e.which === 13 && self.victoryCondition === true) {
+        self.changeWord()
       }
     })
   }
@@ -91,8 +115,13 @@ class GameView extends GameLogic {
         this.storeGuessedLetter(this.corGuess, letter)
         this.revealLetter(letter)
         if (this.checkCompletion()){
+          //----VICTORY----
           this.incrementScore()
-          this.victory = true
+          setTimeout(function(){
+            this.setVictoryTrue ()
+            console.log('RUN')
+          }.bind(this), 1000);
+
           this.toggleClass($('#next'),'button-enable','button-disable')
         }
       } else {
@@ -109,13 +138,20 @@ class GameView extends GameLogic {
     this.tries -= 1
     this.addHangman(this.tries + 1)
     if (0 === this.tries){
-      this.retrieveWord()
-      //this.setIncorrectGuess()
+      this.score = 0
+      this.toggleClass($('#fade-screen'), 'hide2','show2')
     }
   }
 
   addHangman(tries){
     this.toggleClass($(`#hang-${tries}`), 'show', 'hide')
+  }
+
+  hideHangman(){
+    for (let i = 1; i <= 7; i++){
+      $(`#hang-${i}`).removeClass('show')
+      $(`#hang-${i}`).addClass('hide')
+    }
   }
 
   incrementScore(){
@@ -166,5 +202,13 @@ class GameView extends GameLogic {
         inputBox.val('')
       }
     }
+  }
+
+  reset(){
+    this.tries = 7
+    this.hideHangman()
+    this.currentWord = ''
+    this.corGuess = []
+    this.incorGuess = []
   }
 }

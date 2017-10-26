@@ -46,7 +46,6 @@ class GameLogic {
   storeGuessedLetter(arr, letter){
     if (arr.length > 1){
       arr.push(letter)
-      //arr.sort()
     } else {
       arr.push(letter)
     }
@@ -62,21 +61,5 @@ class GameLogic {
     } else {
       return false
     }
-  }
-
-  hideHangman(){
-      for (let i = 1; i <= 7; i++){
-        $(`#hang-${i}`).removeClass('show')
-        $(`#hang-${i}`).addClass('hide')
-      }
-    }
-
-  reset(){
-    this.tries = 7
-    this.hideHangman()
-    //this.setIncorrectGuess()
-    this.currentWord = ''
-    this.corGuess = []
-    this.incorGuess = []
   }
 }

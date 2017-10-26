@@ -1,8 +1,32 @@
 html,
-body {
+body,
+#container {
   height: 100%
 }
-body {
+
+#lost-button {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 3em;
+  pointer-events: none;
+}
+
+#fade-screen {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#fade-screen:hover {
+  cursor: pointer;
+}
+
+#container {
   margin: 0 20% 0 20%;
   display: grid;
   grid-template-rows: 5% auto 40%;
@@ -24,12 +48,28 @@ p {
   align-items: center;
 }
 
-.show{
+.show2{
+  visibility: visible;
   opacity: 1;
+  transition: visibility 0s, opacity 0.8s linear;
+}
+
+.hide2{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.8s linear;
+}
+
+.show{
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.2s linear;
 }
 
 .hide{
+  visibility: hidden;
   opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear;
 }
 
 /*FOOTER*/
@@ -94,7 +134,7 @@ p {
   text-transform: uppercase;
   color: transparent;
   text-shadow: 0 0 0 black;
-  background-color: #F5F5F5;
+  background-color: #D6D6D6;
   transition: background-color 1s ease;
   transition: text-shadow 1s ease;
 }
@@ -102,7 +142,7 @@ p {
 .input-box:focus {
   outline-width: 0;
   color: white;
-  background-color: #B3B3B3;
+  background-color: #ABA6A6;
   color : transparent;
   text-shadow: 0 0 0 white;
   transition: background-color 0.5s ease;
