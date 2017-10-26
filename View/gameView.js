@@ -50,7 +50,6 @@ class GameView extends GameLogic {
   changeWord(){
     this.toggleClass($('#next'), 'button-enable','button-disable')
     this.retrieveWord()
-    $('#score').text(this.score)
     this.victory = false
     this.setIncorrectGuess()
   }
@@ -157,6 +156,13 @@ class GameView extends GameLogic {
 
   incrementScore(){
     this.score += 1
+    $('#score').text(this.score)
+    setTimeout(function(){
+      $('#score').addClass('increment-score')
+    }, 50)
+    setTimeout(function(){
+      $('#score').removeClass('increment-score')
+    }, 300)
   }
 
   setIncorrectGuess () {

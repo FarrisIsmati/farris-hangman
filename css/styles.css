@@ -43,6 +43,19 @@ p {
   align-items: flex-end;
 }
 
+#score{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.5em;
+  transition: color .3s, font-size .3s, scale .3s ease;
+}
+
+.increment-score{
+  color: white;
+  transform: scale(1.5);
+  transition: color .2s, font-size .3s, scale .2s ease;
+}
+
 .visual {
   display: flex;
   justify-content: center;
@@ -52,32 +65,32 @@ p {
 .show2{
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s, opacity 0.8s linear;
+  transition: visibility 0s, opacity 0.8s ease;
 }
 
 .hide2{
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.8s linear;
+  transition: visibility 0s, opacity 0.8s ease;
 }
 
 .show{
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s, opacity 0.2s linear;
+  transition: visibility 0s, opacity 0.2s ease;
 }
 
 .hide{
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.2s linear;
+  transition: visibility 0s, opacity 0.2s ease;
 }
 
 /*FOOTER*/
 
 .footer {
   display: grid;
-  grid-template-rows: auto 15% auto 15%;
+  grid-template-rows: 20% 10% auto 15% 15%;
 }
 
 .correct-guess-holder,
@@ -126,8 +139,8 @@ p {
 .input-box {
   text-align: center;
   padding: 5px;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   font-size: 20px;
   border: 0px;
   border-radius: 4px;
