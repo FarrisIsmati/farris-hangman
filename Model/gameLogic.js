@@ -1,12 +1,9 @@
 class GameLogic {
   constructor(){
-    //Main game logic
     this.words = this.retreiveWords()
     this.usedWords = []
     this.score = 0
     this.highScore = 0
-
-    //Current Word
     this.currentWord = ''
     this.incorGuess = []
     this.corGuess = []
@@ -15,25 +12,19 @@ class GameLogic {
     this.victory = false
   }
 
+  //SETTING UP WORDS ARRAYS
+
   retreiveWords(){
     return words.slice('')
   }
 
-  setHighScore(){
-    let self = this
-    if (this.highScore < this.score){
-      this.highScore = this.score
-      $('#high-score').text(self.highScore)
-    }
-  }
-
-  //Increment to Used
   setUsedWords(randomNum){
     this.words.splice(randomNum, 1)
     this.usedWords.push(this.currentWord)
   }
 
-  //Check if variable has been entered in array
+  //LETTER CHECKING
+
   hasNotBeenEntered(letter){
     if (this.incorGuess.indexOf(letter) === -1 && this.corGuess.indexOf(letter) === -1){
       return true
@@ -42,7 +33,6 @@ class GameLogic {
     }
   }
 
-  //Check if letter matches with letter in the word
   checkLetter(letter){
     let re = new RegExp(letter, 'i')
     if (re.exec(this.currentWord) && letter != ''){
@@ -52,6 +42,8 @@ class GameLogic {
     }
   }
 
+  //STORING LETTERS
+
   storeGuessedLetter(arr, letter){
     if (arr.length > 1){
       arr.push(letter)
@@ -59,6 +51,8 @@ class GameLogic {
       arr.push(letter)
     }
   }
+
+  //CHECKING IF WORD IS COMPLETE
 
   checkCompletion(){
     let seen = {}

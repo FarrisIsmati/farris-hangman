@@ -37,6 +37,8 @@ p {
   margin-bottom: 0px;
 }
 
+/*----------HEADER---------------*/
+
 .header {
   display: flex;
   justify-content: center;
@@ -66,6 +68,8 @@ p {
   transform: scale(1.5);
   transition: color .2s, font-size .3s, scale .2s ease;
 }
+
+/*----------GAME BOARD---------------*/
 
 .visual {
   display: flex;
@@ -97,7 +101,7 @@ p {
   transition: visibility 0s, opacity 0.2s ease;
 }
 
-/*FOOTER*/
+/*----------FOOTER---------------*/
 
 .footer {
   display: grid;
@@ -114,10 +118,6 @@ p {
   align-items: center;
 }
 
-.correct-guess-holder {
-    /*background-color: yellow;*/
-}
-
 .correct-guess {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -132,19 +132,11 @@ p {
   pointer-events: none;
 }
 
-.incorrect-guess-holder {
-  /*background-color: blue;*/
-}
-
 .incorrect-guess {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   margin-bottom: 0px;
   color: #FF5252;
-}
-
-.input-holder {
-  /*background-color: yellow;*/
 }
 
 .input-box {
@@ -198,11 +190,15 @@ p {
   pointer-events: none;
 }
 
+/*----------SVG STYLING---------------*/
+
 .st0{fill:none;stroke:#000000;stroke-width:6;stroke-miterlimit:10;}
 .st1{fill:none;stroke:#000000;stroke-width:7;stroke-miterlimit:10;}
 .st2{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
 .st3{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
 .st4{fill:#FFFFFF;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+
+/*----------MEDIA QUERIES---------------*/
 
 @media only screen
 and (min-device-width : 768px)
