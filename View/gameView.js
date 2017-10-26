@@ -43,12 +43,14 @@ class GameView extends GameLogic {
       self.toggleClass($('#fade-screen'), 'hide2','show2')
       self.retrieveWord()
       self.setIncorrectGuess()
+      $('#score').text(self.score)
     })
   }
 
   changeWord(){
     this.toggleClass($('#next'), 'button-enable','button-disable')
     this.retrieveWord()
+    $('#score').text(this.score)
     this.victory = false
     this.setIncorrectGuess()
   }
@@ -109,7 +111,7 @@ class GameView extends GameLogic {
 
   //Store guessed letters for current word
   storeLetter(letter){
-    if (this.hasNotBeenEntered(letter)){
+    if (this.hasNotBeenEntered(letter) && letter != ''){
       console.log(game1)
       if (this.checkLetter(letter)) {
         this.storeGuessedLetter(this.corGuess, letter)
@@ -119,8 +121,7 @@ class GameView extends GameLogic {
           this.incrementScore()
           setTimeout(function(){
             this.setVictoryTrue ()
-            console.log('RUN')
-          }.bind(this), 1000);
+          }.bind(this), 500);
 
           this.toggleClass($('#next'),'button-enable','button-disable')
         }
