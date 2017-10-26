@@ -36,11 +36,19 @@ class GameView extends GameLogic {
     this.lostBtn()
     this.letterValidate()
     this.animateHangman()
+    this.showHighScore()
+  }
+
+  showHighScore() {
+    let self = this
+    $( '.header' ).mouseenter( () => {$('#score').text(self.highScore)
+      self.toggleClass($('#score'), 'normal-score', 'high-score')} ).mouseleave( () => {$('#score').text(self.score)
+    self.toggleClass($('#score'), 'normal-score', 'high-score')} );
   }
 
   animateHangman() {
     $( "#Hangman" ).animate({ svgTransform: 'translate(40, -63) rotate(10, 10, 0)'}, 3500)
-    $( "#Hangman" ).animate({ svgTransform: 'translate(-35, 75) rotate(-10, 20, -20)'}, 3500, )
+    $( "#Hangman" ).animate({ svgTransform: 'translate(-35, 75) rotate(-10, 20, -30)'}, 3500, )
     setTimeout(function(){
       this.animateHangman()
     }.bind(this),1)
@@ -167,6 +175,7 @@ class GameView extends GameLogic {
 
   incrementScore(){
     this.score += 1
+    this.setHighScore()
     $('#score').text(this.score)
     setTimeout(function(){
       $('#score').addClass('increment-score')

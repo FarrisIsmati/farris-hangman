@@ -4,6 +4,7 @@ class GameLogic {
     this.words = this.retreiveWords()
     this.usedWords = []
     this.score = 0
+    this.highScore = 0
 
     //Current Word
     this.currentWord = ''
@@ -16,6 +17,14 @@ class GameLogic {
 
   retreiveWords(){
     return words.slice('')
+  }
+
+  setHighScore(){
+    let self = this
+    if (this.highScore < this.score){
+      this.highScore = this.score
+      $('#high-score').text(self.highScore)
+    }
   }
 
   //Increment to Used
