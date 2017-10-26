@@ -128,7 +128,6 @@ class GameView extends GameLogic {
   //Store guessed letters for current word
   storeLetter(letter){
     if (this.hasNotBeenEntered(letter) && letter != ''){
-      console.log(game1)
       if (this.checkLetter(letter)) {
         this.storeGuessedLetter(this.corGuess, letter)
         this.revealLetter(letter)

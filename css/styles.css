@@ -156,21 +156,19 @@ p {
   border: 0px;
   border-radius: 4px;
   text-transform: uppercase;
-  color: transparent;
-  text-shadow: 0 0 0 black;
+  color: black;
   background-color: #D6D6D6;
   transition: background-color 1s ease;
-  transition: text-shadow 1s ease;
+  transition: color 1s ease;
 }
 
 .input-box:focus {
   outline-width: 0;
   color: white;
   background-color: #ABA6A6;
-  color : transparent;
-  text-shadow: 0 0 0 white;
+  color : white;
   transition: background-color 0.5s ease;
-  transition: text-shadow 0.5s ease;
+  transition: color 0.5s ease;
   transition: scale 0.5s ease;
 }
 
@@ -205,3 +203,11 @@ p {
 .st2{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
 .st3{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
 .st4{fill:#FFFFFF;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  {
+  #container {
+    margin: 0 5% 0 5%;
+  }
+}
