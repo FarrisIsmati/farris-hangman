@@ -35,6 +35,15 @@ class GameView extends GameLogic {
     this.submitBtn()
     this.lostBtn()
     this.letterValidate()
+    this.animateHangman()
+  }
+
+  animateHangman() {
+    $( "#Hangman" ).animate({ svgTransform: 'translate(40, -63) rotate(10, 10, 0)'}, 3500)
+    $( "#Hangman" ).animate({ svgTransform: 'translate(-35, 75) rotate(-10, 20, -20)'}, 3500, )
+    setTimeout(function(){
+      this.animateHangman()
+    }.bind(this),1)
   }
 
   lostBtn() {
@@ -139,7 +148,9 @@ class GameView extends GameLogic {
     this.addHangman(this.tries + 1)
     if (0 === this.tries){
       this.score = 0
-      this.toggleClass($('#fade-screen'), 'hide2','show2')
+      setTimeout(function(){
+        this.toggleClass($('#fade-screen'), 'hide2','show2')
+      }.bind(this), 500)
     }
   }
 
