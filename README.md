@@ -36,7 +36,9 @@ class Game {
   victoryCondition(){
   }
 }
+```
 
+```es6
 class Score(){
   constructor(){
     this.currentScore = 0
@@ -55,7 +57,9 @@ class Score(){
   checkHighScore(){
   }
 }
+```
 
+```es6
 class Tries{
   constructor(){
     this.currentTries = 7
@@ -70,7 +74,9 @@ class Tries{
   getTries(){
   }
 }
+```
 
+```es6
 class Letter{
   constructor(){
     this.currentLetter = getCurrentLetter()
