@@ -21,6 +21,7 @@
     <script type="text/javascript" src="Extensions/jquery.svganim.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" defer></script>
     <script src="model/words.js" defer></script>
+    <script src="view/domElements.js" defer></script>
     <script src="model/gameLogic.js" defer></script>
     <script src="view/gameView.js" defer></script>
     <script src="gameMain.js" defer></script>
@@ -34,7 +35,7 @@
       <header class="header">
         <p id="score" class="normal-score">0</p>
       </header>
-      <content class="visual">
+      <main class="visual">
         <svg id="svg-main" width="245px" height="300px" viewBox="200 350 500 400" preserveAspectRatio="xMaxYMax">
           <g id="Base">
             <rect x="587.2" y="169.9" width="15.1" height="547.2"/>
@@ -83,7 +84,7 @@
           	</g>
           </g>
         </svg>
-      </content>
+      </main>
       <footer class="footer">
         <div class="correct-guess-holder">
         </div>
