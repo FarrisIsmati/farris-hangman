@@ -4,6 +4,21 @@ body,
   height: 100%;
 }
 
+/*----------FLEXBOXCENTER---------------*/
+#fade-screen,
+.visual,
+.correct-guess-holder,
+.correct-guess,
+.incorrect-guess-holder,
+.input-holder,
+.buttons-holder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*----------TOP LAYER---------------*/
+
 #lost-button {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
@@ -13,9 +28,6 @@ body,
 
 #fade-screen {
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: white;
   height: 100%;
   width: 100%;
@@ -71,12 +83,6 @@ p {
 
 /*----------GAME BOARD---------------*/
 
-.visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .show2{
   visibility: visible;
   opacity: 1;
@@ -106,16 +112,6 @@ p {
 .footer {
   display: grid;
   grid-template-rows: 20% 10% auto 15% 15%;
-}
-
-.correct-guess-holder,
-.correct-guess,
-.incorrect-guess-holder,
-.input-holder,
-.buttons-holder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .correct-guess {
