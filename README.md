@@ -91,4 +91,4 @@ class Letter{
   }
 }
 ```
-Note: I developed this on an old 2009 MacBook Pro with a very low resolution. All css adjustments probably wont look good on any modern desktop/laptop with a higher resolution. So if I remade the application I would put a lot more consideration in dynamic css attributes
+Note: I developed this on an old 2009 MacBook Pro with a very low resolution. All css adjustments probably wont look good on any modern desktop/laptop with a higher resolution. So if I remade the application I would put a lot more consideration on dynamic css attributes
