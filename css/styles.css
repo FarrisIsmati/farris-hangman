@@ -41,7 +41,7 @@ body,
   margin: 0 20% 0 20%;
   display: grid;
   grid-template-rows: 5% auto 40%;
-  padding: 5% 0 5% 0;
+  padding: 3% 0 5% 0;
 }
 
 p {
@@ -59,7 +59,7 @@ p {
 #score{
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: 1.5em;
+  font-size: 2em;
   transition: color .3s, font-size .3s, scale .3s ease;
 }
 
@@ -110,25 +110,26 @@ p {
 
 .footer {
   display: grid;
-  grid-template-rows: 20% 10% auto 15% 15%;
+  grid-template-rows: 20% 15% auto 15% 15%;
 }
 
 .correct-guess {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   margin: 0 3px 0 3px;
-  width: 30px;
+  width: 2em;
   border-bottom: solid 1px black;
 }
 
 .correct-guess-letter {
   opacity: 0;
-  font-size: 20px;
+  font-size: 2em;
 }
 
 .incorrect-guess {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
+  font-size:1.3em;
   margin-bottom: 0px;
   color: #FF5252;
 }
@@ -136,9 +137,9 @@ p {
 .input-box {
   text-align: center;
   padding: 5px;
-  height: 40px;
-  width: 40px;
-  font-size: 20px;
+  height: 2.2em;
+  width: 2.2em;
+  font-size: 2em;
   border: 0px;
   border-radius: 4px;
   text-transform: uppercase;
@@ -161,7 +162,7 @@ p {
 .buttons-holder {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 2em;
 }
 
 .buttons-holder p {
@@ -190,13 +191,3 @@ p {
 .st2{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10}
 .st3{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10}
 .st4{fill:#FFFFFF;stroke:#000000;stroke-width:4;stroke-miterlimit:10}
-
-/*----------MEDIA QUERIES---------------*/
-
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)  {
-  #container {
-    margin: 0 5% 0 5%;
-  }
-}
