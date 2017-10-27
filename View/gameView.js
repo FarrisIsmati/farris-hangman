@@ -1,6 +1,7 @@
 class GameView extends GameLogic {
   constructor() {
     super()
+
     this.validKeypress = false
   }
 
@@ -107,26 +108,6 @@ class GameView extends GameLogic {
     for (let i = 1; i <= 7; i++){
       $(`#hang-${i}`).removeClass("show")
       $(`#hang-${i}`).addClass("hide")
-    }
-  }
-
-  incrementScore(){
-    this.score += 1
-    this.setHighScore()
-    $("#score").text(this.score)
-    setTimeout(function(){
-      $("#score").addClass("increment-score")
-    }, 50)
-    setTimeout(function(){
-      $("#score").removeClass("increment-score")
-    }, 300)
-  }
-
-  setHighScore(){
-    let self = this
-    if (this.highScore < this.score){
-      this.highScore = this.score
-      $('#high-score').text(self.highScore)
     }
   }
 
@@ -245,6 +226,26 @@ class GameView extends GameLogic {
       setTimeout(function(){
         this.toggleClass($("#fade-screen"), "hide2","show2")
       }.bind(this), 500)
+    }
+  }
+
+  incrementScore(){
+    this.score += 1
+    this.setHighScore()
+    $("#score").text(this.score)
+    setTimeout(function(){
+      $("#score").addClass("increment-score")
+    }, 50)
+    setTimeout(function(){
+      $("#score").removeClass("increment-score")
+    }, 300)
+  }
+
+  setHighScore(){
+    let self = this
+    if (this.highScore < this.score){
+      this.highScore = this.score
+      $('#high-score').text(self.highScore)
     }
   }
 
