@@ -39,7 +39,7 @@ class Game {
 ```
 
 ```es6
-class Score(){
+class Score {
   constructor(){
     this.currentScore = 0
     this.highScore = 0
