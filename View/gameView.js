@@ -1,4 +1,14 @@
 class GameView extends GameLogic {
+  // Generally, instead of having your view inherit from your model, you will have them
+  // as separate classes and give your view access to your model:
+  //
+  // In the constructor of GameView you may have something like this:
+  // constructor() {
+  //   this.model = new GameModel()
+  // }
+  //
+  // That way, you have more separation of concerns
+
   constructor() {
     super()
 
@@ -18,6 +28,8 @@ class GameView extends GameLogic {
   get victoryCondition () {
     return this.victory
   }
+  // Do you need to set up a getter method here for an attribute that is already directly
+  // accessible?
 
   setVictoryTrue () {
     this.victory = true
@@ -151,18 +163,21 @@ class GameView extends GameLogic {
 
   letterValidate(){
     let self = this
-    $("#letter-input").on("input", function() {
+    // Good job preserving the context of `this` by storing it to a variable
+    // Alternatively, you could use an arrow function below for the callback to prevent
+    // `this` being redefined to the element
+    $("#letter-input").on("input", () => {
         let keyInput = $("#letter-input").val();
-        if (self.validateLetter(keyInput)){
-          self.validKeypress = true
-        } else if (keyInput === "") {
-          //Ignore this keystroke
-        } else {
-          self.validKeypress = false
+        if (this.validateLetter(keyInput)){
+          this.validKeypress = true
+        } else if (keyInput !== "") {
+          this.validKeypress = false
         }
+        // You don't want to have empty conditional blocks as it usually means you can
+        // refactor them away
     }).keydown(function (e) {
       if (e.keyCode == 13) {
-        self.submitLetter()
+        this.submitLetter()
       }
     })
   }
@@ -191,6 +206,8 @@ class GameView extends GameLogic {
       this.retrieveWord()
     }
   }
+  // ^^^ Be careful when naming methods similarily (retrieveWord vs retrieveWords), perhaps
+  // rename one of them to distinguish between their relative functionalities
 
   //LETTER STORAGE & WINNING
 
@@ -259,6 +276,7 @@ class GameView extends GameLogic {
       element.removeClass(class1)
       element.addClass(class2)
     }
+    // Could the above code be refactored using `toggleClass()` ?
   }
 
   //DEFAULT SETTING

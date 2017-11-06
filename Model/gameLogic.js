@@ -1,4 +1,6 @@
 class GameLogic {
+  // while GameLogic is perfectly acceptable, more standard would be to refer to this as
+  // the "model", so something like "GameModel"
   constructor(){
     this.words = this.retreiveWords()
     this.usedWords = []
@@ -16,6 +18,14 @@ class GameLogic {
 
   retreiveWords(){
     return words.slice('')
+    // Notice how this has to reach outside of the scope of the object to get the `words`
+    // data? A better approach would be to have the list of words passed into the constructor
+    // when GameLogic is instantiated:
+    //
+    // constructor (wordList) {
+    //   this.words = wordList
+    // }
+
   }
 
   setUsedWords(randomNum){
@@ -66,3 +76,4 @@ class GameLogic {
     }
   }
 }
+// ^^^ Excellent job keeping your methods narrowly focused and modular

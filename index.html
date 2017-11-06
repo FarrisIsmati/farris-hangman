@@ -10,15 +10,18 @@
     <!-- CSS Dependencies -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <!-- Great job using a CSS Framework -->
 
     <!-- JS Dependencies -->
     <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous" defer></script>
     <link rel="stylesheet" type="text/css" href="Extensions/jquery.svg.css">
-    <script type="text/javascript" src="Extensions/jquery.svg.js"></script>
-    <script type="text/javascript" src="Extensions/jquery.svganim.js"></script>
+    <!-- Does this link needed to be loaded here with the scripts? If not, put it above with the other link tags -->
+    <script type="text/javascript" src="Extensions/jquery.svg.js" defer></script>
+    <script type="text/javascript" src="Extensions/jquery.svganim.js" defer></script>
+    <!-- Always use `defer`, `async`, or put scripts at the bottom to prevent render blocking  -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" defer></script>
     <script src="model/words.js" defer></script>
     <script src="model/gameLogic.js" defer></script>
@@ -83,6 +86,7 @@
           	</g>
           </g>
         </svg>
+        <!-- Excellent job using SVGs to create your hangman interface -->
       </main>
       <footer class="footer">
         <div class="correct-guess-holder">
@@ -92,6 +96,9 @@
         <div class="input-holder">
             <input type="text" class="input-box" maxlength="1" id="letter-input">
         </div>
+        <!-- Maybe add a feature where there is an event listener for keypress, and if
+        I click on a letter, the input box automatically is changed to that letter,
+        whether I have it selected or not -->
         <div class="buttons-holder">
             <p id="submit" class="button-enable">submit</p>
             <p id="next" class="button-disable" >next</p>

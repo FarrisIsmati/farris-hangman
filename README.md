@@ -23,16 +23,16 @@ class Game {
     this.usedWords = []
     this.victory = false
   }
-  
+
   retrieveNewWords(){
   }
-  
+
   getNewWord(){
   }
-  
+
   storeUsedWords(){
   }
-  
+
   victoryCondition(){
   }
 }
@@ -44,16 +44,16 @@ class Score(){
     this.currentScore = 0
     this.highScore = 0
   }
-  
+
   incrementScore(){
   }
-  
+
   decrementScore(){
   }
-  
+
   getScore(){
   }
-  
+
   checkHighScore(){
   }
 }
@@ -64,13 +64,13 @@ class Tries{
   constructor(){
     this.currentTries = 7
   }
-  
+
   decrementTries(){
   }
-  
+
   resetTries(){
   }
-  
+
   getTries(){
   }
 }
@@ -83,18 +83,22 @@ class Letter{
     this.correctLetters = []
     this.incorrectLetters = []
   }
-  
+
   validateLetter(){
   }
-  
+
   submitLetter(){
   }
-  
+
   checkIfEntered(){
   }
-  
+
   checkCompletion(){
   }
 }
 ```
+<!-- ^^^ The above organization is exactly how you want to be thinking about this. Especially
+the part about separating out your DOM logic into its own separate class that then watches for
+changes in  -->
+
 Note: I developed this on an old 2009 MacBook Pro with a very low resolution. All css adjustments probably wont look good on any modern desktop/laptop with a higher resolution. So if I remade the application I would put a lot more consideration on dynamic css attributes

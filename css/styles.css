@@ -17,6 +17,11 @@ body,
   align-items: center;
 }
 
+/*Here, instead of selecting a bunch of different classes, you could create a new
+class (called something like `flex-center`) and then give each of the elements you
+are targeting above this class independently. This is a more DRY and modular approach
+to CSS. Also, consider looking into a CSS Methodology such as BEM: https://css-tricks.com/bem-101/*/
+
 /*----------TOP LAYER---------------*/
 
 #lost-button {
@@ -47,6 +52,8 @@ body,
 p {
   margin-bottom: 0px;
 }
+/*Consider moving this selector up to the top of your stylesheet because it is more
+general (less specific) and would apply to all p elements throughout your document*/
 
 /*----------HEADER---------------*/
 
@@ -56,25 +63,26 @@ p {
   align-items: flex-end;
 }
 
-#score{
+/*Also, try to be consistent with stylistic choices like spacing and indentation*/
+#score {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 1.5em;
   transition: color .3s, font-size .3s, scale .3s ease;
 }
 
-.high-score{
+.high-score {
   color: #06BF00;
   transform: scale(1.5);
   transition: color .3s, scale .5s ease;
 }
 
-.normal-score{
+.normal-score {
   color: black;
   transition: color .3s ease;
 }
 
-.increment-score{
+.increment-score {
   color: white;
   transform: scale(1.5);
   transition: color .2s, font-size .3s, scale .2s ease;
