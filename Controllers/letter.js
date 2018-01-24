@@ -1,5 +1,6 @@
 class Letter{
-  constructor(){
+  constructor(tries){
+    this.tries = tries
     this.word = ''
     this.currentLetter = ''
     this.correctLetters = []
@@ -7,7 +8,7 @@ class Letter{
     this.validLetter = false
   }
 
-  _validateLetter(letter) {
+  validateLetter(letter) {
     let re = new RegExp(/^[a-zA-Z]+$/, "i")
     if (re.exec(letter) && letter != "") {
       return true
@@ -21,15 +22,25 @@ class Letter{
   }
 
   submitLetter(letter){
-    if (this._checkIfEntered(letter)){
-      if (this._validateLetter(letter)){
-        this._storeLetter(this.corGuess, letter)
+    if (this._checkIfEntered(letter) && this.validateLetter(letter)){
+      if (this._checkMatch(letter)){
+        this._storeLetter(this.correctLetters, letter)
+        this._revealLetter(letter)
         if (this._checkCompletion()){
-          //DO SOMETHING
+          //set finished word to true
         }
       } else {
-        this._storeLetter(this.incorGuess, letter)
+        this._storeLetter(this.incorrectLetters, letter)
+        this.tries.decrementTries()
       }
+    }
+  }
+
+  _checkMatch(letter){
+    if (this.word.indexOf(letter.toUpperCase()) != -1){
+      return true
+    } else {
+      return false
     }
   }
 
@@ -55,6 +66,16 @@ class Letter{
     } else {
       return false
     }
+  }
+
+  //Shows the revealed letter upon guessing correctly
+  _revealLetter(letter) {
+    let currentLetter = $(".correct-guess").children()
+    currentLetter.each(function(){
+      if (letter === this.innerHTML){
+        $(this).css("opacity", 1)
+      }
+    })
   }
 
   getCorrectLetters(){

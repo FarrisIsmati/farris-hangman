@@ -1,8 +1,8 @@
 class Game {
   constructor(){
-    this.score = new Score()
     this.tries = new Tries()
-    this.letter = new Letter()
+    this.score = new Score()
+    this.letter = new Letter(this.tries)
     this.word = ""
     this.words = this.retrieveNewWords()
     this.usedWords = []
@@ -16,11 +16,9 @@ class Game {
   getNewWord(){
     let randomNum = Math.floor(Math.random()*this.words.length)
     if (this.words.length > 1) {
-      //this.reset()
       this.word = this.words[randomNum]
       this.letter.setWord(this.word)
       this.storeUsedWords(randomNum)
-      //this.setCurrentWord()
     } else {
       this.words = this.retrieveNewWords()
       this.getNewWord()
@@ -37,13 +35,6 @@ class Game {
 
   reset(){
     this.tries.resetTries()
-    //this.hideHangman()
     this.word = ""
-    //this.corGuess = []
-    //this.incorGuess = []
   }
-
 }
-
-let game = new Game()
-game.getNewWord()
